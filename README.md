@@ -1,47 +1,151 @@
-<h1 align="center" id="title">Administrador de Productos</h1>
+# Administrador de Productos
 
-<p align="center"><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fimage.freepik.com%2Fvector-gratis%2Flanzamiento-nuevo-proyecto-empresarial-lanzamiento-nuevo-producto-o-servicio_106788-151.jpg&amp;f=1&amp;nofb=1&amp;ipt=a9c3fa24163915fb08e237651f80997048a185ee3d94757017b1cd17f52400bd&amp;ipo=images" alt="project-image"></p>
+## Introducción
 
-<p id="description">Proyecto desarrollado usando un Stack PERN junto a una Rest Api para la comunicacion entre el backend y el frontend</p>
+Este proyecto es un Administrador de Productos que utiliza un Stack PERN (PostgreSQL, Express, React, Node.js) y una Rest API para la comunicación entre el backend y el frontend.
 
-  
-  
-<h2>🧐 Features</h2>
+## Características
 
-Here're some of the project's best features:
+- Mejoras visuales con Tailwind CSS
+- Mejoras de seguridad en las transacciones de datos
 
-*   Mejoras visuales
-*   Mejoras de seguridad
+## Tecnologías Utilizadas
 
-<h2>🛠️ Installation Steps:</h2>
+- Node.js: Entorno de ejecución para JavaScript en el servidor.
+- Express: Framework de Node.js para crear aplicaciones web.
+- TypeScript: Superset de JavaScript con tipado estático.
+- React: Biblioteca de JavaScript para construir interfaces de usuario.
+- Tailwind CSS: Framework de CSS para diseño rápido y responsivo.
+- PostgreSQL: Sistema de gestión de bases de datos relacional.
 
-<p>1. instalacion de paquetes</p>
+## Estructura del Proyecto
+
+Describir la estructura de carpetas del proyecto, como `src`, `models`, `handlers`, `config`, etc.
+
+## Configuración y Requisitos Previos
+
+- Node.js y npm o pnpm instalados.
+- PostgreSQL instalado y configurado.
+- Certificado `ca.crt` para la conexión a la base de datos PostgreSQL.
+
+## Instalación
+
+1. Clonar el repositorio: `git clone https://github.com/tu-usuario/tu-proyecto`.
+2. Instalar dependencias: `pnpm install`.
+3. Configurar la base de datos PostgreSQL.
+4. Colocar el archivo `ca.crt` en la carpeta del proyecto.
+
+## Uso
+
+Explicar cómo iniciar el servidor y cómo navegar por la interfaz de usuario de React.
+
+## Documentación de la API del Administrador de Productos
+
+Esta documentación describe los endpoints disponibles en la API del Administrador de Productos, que permite la gestión de un catálogo de productos.
+
+## Endpoints
+
+### Obtener todos los productos
+
+- **GET** `/api/products`
+- **Descripción**: Retorna una lista de todos los productos.
+- **Parámetros**: No aplica.
+- **Respuesta de éxito**: Código 200 (OK) y un array de productos.
+
+```json
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Producto 1",
+      "price": 10.99,
+      "availability": true
+    },
+    {
+      "id": 2,
+      "name": "Producto 2",
+      "price": 7.99,
+      "availability": false
+    }
+  ]
+}
+```
+
+## Obtener un producto por ID
+
+- GET /api/products/:id
+  Descripción: Retorna el producto con el ID especificado.
+- Parámetros:
+- id (en ruta): El ID del producto a obtener.
+- Respuesta de éxito: Código 200 (OK) y el producto solicitado.
+
+```json
+{
+  "product": {
+    "id": 1,
+    "name": "Producto 1",
+    "price": 10.99,
+    "availability": true
+  }
+}
+```
+
+## Crear un nuevo producto
+
+- POST /api/products
+  Descripción: Crea un nuevo proyecto con los datos proporcionados.
+- Parámetros:
+- name (en cuerpo): El nombre del proyecto.
+- price (en cuerpo): El precio del proyecto.
+- availability (en cuerpo): La disponibilidad del proyecto.
+- Respuesta de opción: Código 201 (CREATED) y el proyecto creado.
+
+```json
+{
+  "product": {
+    "id": 1,
+    "name": "Producto 1",
+    "price": 10.99,
+    "availability": true
+  }
+}
+```
+
+## Actualizar un proyecto por ID
+
+- PUT /api/products/:id
+  Descripción: Actualiza el proyecto con el ID especificado con los datos proporcionados.
+- Parámetros:
+- id (en ruta): El ID del proyecto a actualizar.
+- name (en cuerpo): El nuevo nombre del proyecto.
+- price (en cuerpo): El nuevo precio del proyecto.
+- availability (en cuerpo): La nueva disponibilidad del proyecto.
+- Respuesta de búsqueda: Código 200 (OK) y el proyecto actualizado.
+
+```json
+{
+  "product": {
+    "id": 1,
+    "name": "Producto 1",
+    "price": 10.99,
+    "availability": true
+  }
+}
+```
+
+## Eliminar un proyecto por ID
+
+- DELETE /api/products/:id
+  Descripción: Elimina el proyecto con el ID especificado.
+- Parámetros:
+- id (en ruta): El ID del proyecto a eliminar.
+- Respuesta de búsqueda: Código 200 (OK) y el proyecto eliminado.
+
+````json
+
+{
+  "message": "Product deleted"
+}
 
 ```
-pnpm install
-```
-
-  
-  
-<h2>💻 Built with</h2>
-
-Technologies used in the project:
-
-*   Nodejs
-*   Express
-*   Typescript
-*   React
-*   Tailwindcss
-
-
-<h2> Connect to the Database</h2>
-
-* Using a PostgreSQL database
-* ca.crt is a certificate authority that you can download from https://cloud.tembo.io/ and put it in the same folder as the project
-
-
-
-
-
-<h2>🛡️ License:</h2>
-This project is licensed under the MIT
+````
