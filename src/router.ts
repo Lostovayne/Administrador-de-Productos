@@ -1,20 +1,68 @@
 import { Router } from "express";
-import { createProduct } from "./handlers/product";
+import { body, param } from "express-validator";
+import {
+  createProduct,
+  deleteProduct,
+  getProductById,
+  getProducts,
+  updateAvailability,
+  updateProduct,
+} from "./handlers/product";
+import { handleInputError } from "./middleware";
 
 const router = Router();
 
-router.get("/", (req, res) => {
-  res.json("Hello World");
-});
+router.get("/", getProducts);
 
-router.post("/", createProduct);
+router.get(
+  "/:id",
+  param("id").isInt().withMessage("Id must be an integer"),
+  handleInputError,
+  getProductById
+);
 
-router.put("/", (req, res) => {
-  res.json("desde el put");
-});
+router.post(
+  "/",
+  // validando los campos usando express-validator
+  body("name", "Name is required").not().isEmpty(),
+  body("price", "Price is required")
+    .isNumeric()
+    .withMessage("Price must be a number")
+    .notEmpty()
+    .withMessage("Price is required")
+    .custom((value) => value > 0)
+    .withMessage("Price must be greater than 0"),
+  handleInputError,
+  createProduct
+);
 
-router.delete("/", (req, res) => {
-  res.json("desde el delete");
-});
+router.put(
+  "/:id",
+  body("name", "Name is required").not().isEmpty(),
+  body("price", "Price is required")
+    .isNumeric()
+    .withMessage("Price must be a number")
+    .notEmpty()
+    .withMessage("Price is required")
+    .custom((value) => value > 0)
+    .withMessage("Price must be greater than 0"),
+  body("availability", "Availability is required"),
+  handleInputError,
+  updateProduct
+);
+
+router.patch(
+  "/:id",
+  param("id").isInt().withMessage("Id must be an integer"),
+  handleInputError,
+  updateAvailability
+);
+
+router.delete(
+  "/",
+  param("id").isInt().withMessage("Id must be an integer"),
+  handleInputError,
+  deleteProduct
+);
 
 export default router;

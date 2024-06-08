@@ -33,6 +33,15 @@ Technologies used in the project:
 *   React
 *   Tailwindcss
 
-<h2>🛡️ License:</h2>
 
+<h2> Connect to the Database</h2>
+
+* Using a PostgreSQL database
+* ca.crt is a certificate authority that you can download from https://cloud.tembo.io/ and put it in the same folder as the project
+
+
+
+
+
+<h2>🛡️ License:</h2>
 This project is licensed under the MIT
