@@ -24,7 +24,7 @@ export const getProductById = async (req: Request, res: Response) => {
 
 export const createProduct = async (req: Request, res: Response) => {
   const product = await Product.create(req.body);
-  res.status(201).json({ product });
+  res.status(201).json({ data: product });
 };
 
 export const updateProduct = async (req: Request, res: Response) => {
@@ -49,7 +49,7 @@ export const updateAvailability = async (req: Request, res: Response) => {
     return res.status(404).json({ message: "Product not found" });
   }
   // cambiar el estado con el patch
-  product.availability =  !product.dataValues.availability
+  product.availability = !product.dataValues.availability;
   await product.save();
   res.status(200).json({ product });
 };

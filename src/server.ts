@@ -15,10 +15,15 @@ async function connectDB() {
     console.log(colors.red("Database not connected..."));
   }
 }
-
 connectDB();
+
 const server = express();
 server.use(express.json());
 server.use("/api/products", router);
+
+server.get("/api", (req, res) => {
+  res.json({msg:"Desde la api"})
+});
+
 
 export default server;

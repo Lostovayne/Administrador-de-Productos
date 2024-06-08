@@ -141,11 +141,39 @@ Esta documentación describe los endpoints disponibles en la API del Administrad
 - id (en ruta): El ID del proyecto a eliminar.
 - Respuesta de búsqueda: Código 200 (OK) y el proyecto eliminado.
 
-````json
-
+```json
 {
   "message": "Product deleted"
 }
-
 ```
-````
+
+# Documentación de Pruebas (Testing) para Administrador de Productos
+
+## Herramienta de Prueba: Jest
+
+Este proyecto utiliza [Jest](https://jestjs.io/) como el marco de pruebas, que proporciona un enfoque en la simplicidad para escribir pruebas unitarias y de integración.
+
+### Configuración de Jest
+
+La configuración de Jest está definida en `jest.config.js`. Se usa `ts-jest` para trabajar con TypeScript y el entorno de prueba es `node`, adecuado para pruebas en un entorno de servidor.
+
+```javascript
+// jest.config.js
+module.exports = {
+  preset: "ts-jest",
+  testEnvironment: "node",
+};
+```
+
+## Estructura de Archivos de Pruebas
+
+Las pruebas se encuentran en src/**tests** y siguen el patrón \*.test.ts.
+
+```javascript
+// src/__tests__/server.test.ts
+describe("Nuestra primer prueba", () => {
+  test("Debe revisar que 1+1 = 2", () => {
+    expect(1 + 1).toBe(2);
+  });
+});
+```
